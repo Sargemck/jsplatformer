@@ -40,6 +40,8 @@
     var jumpCount = 0;
     var jumpText;
     var jumpPressed = false;
+    var winText;
+    var star;
 
     var game = new Phaser.Game(config);
 
@@ -138,6 +140,20 @@
 
     	if (cursors.space.isUp){
     		jumpPressed = false;
+    	}
+
+    	if (starCount == 12){
+    		if (jumpCount >= 3){
+    			star = 'Gold'
+    		}
+    		else if (jumpCount >= 5){
+    			star = 'Silver'
+    		}
+    		else{
+    			star = 'Bronze'
+    		}
+
+    		jumpText = this.add.text(256, 168, 'Congratulations, you got a ' + star + ' star', {fontsize: '128px', fill: '#FF6600'});
     	}
     }
 
