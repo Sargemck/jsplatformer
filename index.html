@@ -39,6 +39,7 @@
     var starText;
     var jumpCount = 0;
     var jumpText;
+    var jumpPressed = false;
 
     var game = new Phaser.Game(config);
 
@@ -112,7 +113,7 @@
         jumpText = this.add.text(16, 48, 'Jumps Used: 0', {fontsize: '32px', fill: '#000'});
     }
 
-    function update (jumpCount){
+    function update (){
     	if (cursors.left.isDown){
     		player.setVelocityX(-160);
     		player.anims.play('left', true);
@@ -128,17 +129,22 @@
 
     	if (cursors.space.isDown && player.body.touching.down){
     		player.setVelocityY(-630);
-    		jumpCount++;
-    		jumpText.setText('Jumps Used: ' + jumpCount);
+    		if (jumpPressed == false){
+    			jumpCount++;
+    			jumpText.setText('Jumps Used: ' + jumpCount);
+    			jumpPressed = true;
+    		}
+    	}
+
+    	if (cursors.space.isUp){
+    		jumpPressed = false;
     	}
     }
 
     function collectStar (player, star){
     	star.disableBody(true, true);
-
     	starCount += 1;
     	starText.setText('Stars: ' + starCount);
-
     }
 
 </script>
