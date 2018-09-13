@@ -143,17 +143,17 @@
     	}
 
     	if (starCount == 12){
-    		if (jumpCount >= 3){
+    		if (jumpCount <= 3){
     			star = 'Gold'
     		}
-    		else if (jumpCount >= 5){
+    		else if (jumpCount <= 5){
     			star = 'Silver'
     		}
     		else{
     			star = 'Bronze'
     		}
 
-    		jumpText = this.add.text(256, 168, 'Congratulations, you got a ' + star + ' star', {fontsize: '128px', fill: '#FF6600'});
+    		winText = this.add.text(256, 168, 'Congratulations, you got a ' + star + ' star', {fontsize: '128px', fill: '#FF6600'});
     	}
     }
 
